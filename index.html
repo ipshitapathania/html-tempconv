@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <!-- css -->
+    <style>
+        body{
+            padding :50px 100px;
+            text-align: center;
+        }
+
+        #container{
+            
+            text-align: center;
+            justify-content: center;
+            align-content: center;
+            padding: 50px;
+            background-color: #8c1aff;
+        }
+        h1{
+            margin-bottom: 40px;
+            font-weight: bolder;
+            font-size: 40px;
+            color: azure;
+            
+            
+
+        }
+        .input-div{
+            display: inline-block;
+            padding: 20px;
+
+            
+            
+        }
+
+        label{
+            font-size: 22px;
+            height: 20px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-weight: bold;
+            color: azure;
+            
+    
+        }
+        
+        input{
+            text-align: center;
+            font-weight: bold;
+            height: 30px;
+            font-size: 15px;
+            font-size: 20px;
+        }
+        
+        
+        
+    </style>
+</head>
+
+<body>
+    <div id="container">
+    <h1>Temperature Unit Converter
+    <svg  xmlns="http://www.w3.org/2000/svg" width="40" height="26" fill="currentColor" class="bi bi-thermometer-half" viewBox="0 0 16 16">
+        <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415z"/>
+        <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0V2.5zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1z"/>
+      </svg></h1>
+    
+
+      
+    <div class="input-div">
+        <label>Celcius [°C]</label><br>
+        <input type="number" value="0" id="cel" class="inp">
+    </div>
+
+    <div class="input-div">
+        <label>Fahrenheit [°F]</label><br>
+        <input type="number" value="32" id="fah" class="inp" >
+    </div>
+
+    <div class="input-div">
+        <label>Kelvin [K]</label><br>
+        <input type="number"  value="273.15" id="kel" class="inp">
+    </div>
+</div>
+
+<!-- java script -->
+    <script>
+
+        var cel=document.getElementById("cel");
+        var fah=document.getElementById("fah");
+        var kel=document.getElementById("kel");
+
+        // adding event listener
+        fah.addEventListener("input" , function (){
+            let f=this.value;
+            let c=(5/9)*(f-32);
+            cel.value=c;
+            let k=((f - 32) / 1.79999999) + 273.15;
+            kel.value=k;
+
+            
+        });
+
+        kel.addEventListener("input" , function(){
+            let k = this.value;
+            let c= k-273.15;
+            cel.value=c;
+            let f=((k - 273.15) * 1.8) + 32;
+            fah.value=f;
+            
+            
+        });
+
+        cel.addEventListener("input" , function(){
+            let c= this.value;
+            let k= (c*2)/2+273.15;
+            kel.value=k;
+            let f= (9/5)*c+ 32;
+            fah.value=f;
+
+        });
+
+    </script>
+</body>
+</html>
